@@ -1,0 +1,26 @@
+{
+    "name": "priskz/sorad-module-google",
+    "description": "A SORAD module for integrating with Google's API.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+          "name": "Zachary Prisk",
+          "email": "zachary.prisk@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "google/apiclient": "^2.0",
+        "priskz/payload": "~0.0.1",
+        "priskz/sorad-api": "~0.0.1",
+        "priskz/sorad-routes": "~0.0.1",
+        "priskz/sorad-service-provider": "~0.0.1",
+        "priskz/sorad-service": "~0.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Priskz\\SORAD\\Google\\": "src/Priskz/SORAD/Google"
+        }
+    }
+}
