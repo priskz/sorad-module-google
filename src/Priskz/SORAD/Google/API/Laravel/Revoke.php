@@ -35,7 +35,7 @@ class Revoke extends Responder
 
 		$requestParamData = Route::getCurrentRoute()->parametersWithoutNulls();
 
-		if ($requestParamData)
+		if($requestParamData)
 		{
 			$requestData = array_merge($requestData, $requestParamData);
 		}

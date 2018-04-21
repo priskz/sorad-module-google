@@ -30,7 +30,7 @@ class Action extends AbstractAction
 		// Process Action Data Keys
 		$actionDataPayload = $this->processor->process($requestData, $this->getDataKeys(), $this->getRules());
 
-		if ($actionDataPayload->getStatus() != 'valid')
+		if($actionDataPayload->getStatus() != 'valid')
 		{
 			return $actionDataPayload;
 		}
