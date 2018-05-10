@@ -1,5 +1,6 @@
 <?php namespace Priskz\SORAD\Google\API\Laravel\Revoke;
 
+use Priskz\Payload\Payload;
 use Priskz\SORAD\Action\Laravel\AbstractAction;
 use Google;
 
@@ -30,7 +31,7 @@ class Action extends AbstractAction
 		// Process Action Data Keys
 		$actionDataPayload = $this->processor->process($requestData, $this->getDataKeys(), $this->getRules());
 
-		if($actionDataPayload->getStatus() != 'valid')
+		if( ! $actionDataPayload->isStatus(Payload::STATUS_VALID))
 		{
 			return $actionDataPayload;
 		}
