@@ -174,7 +174,7 @@ class Service extends GenericService
      * @param  array $data - Expected Keys: N/A
      * @return Payload
 	 */
-	public function authorize(array $data)
+	public function authorize(array $data, string $state = null)
 	{
 		// @todo: Refactor options to a configuration.
 
@@ -185,6 +185,12 @@ class Service extends GenericService
 
 		// Set all of the dynamic client options.
 		$this->setClientOptions($data['options']);
+
+		if( ! is_null($state))
+		{
+			// Set state variable.
+			$this->client->setState($state);
+		}
 
 		// Set specified scope if provided, otherwise default to all configured defaults.
 		if(array_key_exists('scope', $data))
