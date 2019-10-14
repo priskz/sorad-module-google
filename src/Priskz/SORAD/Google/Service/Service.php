@@ -236,7 +236,7 @@ class Service extends GenericService
 	{
 		// Set all of the dynamic client options.
 		$this->setClientOptions($options);
-		
+
 		// Utilize the client to revoke token.
 		$successful = $this->client->revokeToken();
 
@@ -250,7 +250,7 @@ class Service extends GenericService
 
     /**
      * Set $secret property - if null given check for env value.
-     * 
+     *
      * @return void
      */
     protected function setClient()

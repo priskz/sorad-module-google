@@ -1,22 +1,18 @@
-<?php namespace Priskz\SORAD\Google\API\Laravel\Authenticate;
+<?php
 
+namespace Priskz\SORAD\Google\API\Laravel\Authenticate;
+
+use URL;
 use Priskz\Payload\Payload;
-use Priskz\SORAD\Action\Laravel\AbstractAction;
+use Priskz\SORAD\Action\LaravelAction;
 use Google;
 
-class Action extends AbstractAction
+class Action extends LaravelAction
 {
 	/**
-	 * @var array Data Keys
+	 * @var  array  Request data configuration.
 	 */
-	protected $dataKeys = [
-		'options', 'code', 'error'
-	];
-
-	/**
-	 * @var array Rules
-	 */
-	protected $rules = [
+	protected $config = [
 		'options'              => 'array',
 		'options.redirect_uri' => 'required',
 		'code'                 => 'required',
@@ -24,27 +20,22 @@ class Action extends AbstractAction
 	];
 
 	/**
-	 *	Main Method
-	 */
-	public function __invoke($requestData)
-	{
-		// Process Action Data Keys
-		$actionDataPayload = $this->processor->process($requestData, $this->getDataKeys(), $this->getRules());
-
-		if( ! $actionDataPayload->isStatus(Payload::STATUS_VALID))
-		{
-			return $actionDataPayload;
-		}
-
-		// Execute
-		return $this->execute($actionDataPayload->getData());
-	}
-
-	/**
-	 *	Execute
+	 *	Action Logic
 	 */
 	public function execute($data)
 	{
+		// Add this module's redirect URL to the options.
+		$data['options'] = [
+			'redirect_uri' => URL::route('google.authenticate')
+		];
+
+		$payload = $this->processor->process($data, $this->config);
+
+		if( ! $payload->isStatus(Payload::STATUS_VALID))
+		{
+			return $payload;
+		}
+
 		return Google::authenticate($data);
 	}
 }
