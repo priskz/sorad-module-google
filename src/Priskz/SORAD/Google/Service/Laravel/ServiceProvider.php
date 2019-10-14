@@ -1,4 +1,6 @@
-<?php namespace Priskz\SORAD\Google\Service\Laravel;
+<?php
+
+namespace Priskz\SORAD\Google\Service\Laravel;
 
 use Config;
 use Priskz\SORAD\Google\API\Laravel\Routes;

@@ -1,4 +1,6 @@
-<?php namespace Priskz\SORAD\Google\Service\Laravel;
+<?php
+
+namespace Priskz\SORAD\Google\Service\Laravel;
 
 use Illuminate\Support\Facades\Facade as LaravelFacade;
 use Priskz\SORAD\Google\Service\Laravel\ServiceProvider;

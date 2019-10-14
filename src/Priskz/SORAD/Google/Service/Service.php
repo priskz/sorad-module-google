@@ -1,4 +1,6 @@
-<?php namespace Priskz\SORAD\Google\Service;
+<?php
+
+namespace Priskz\SORAD\Google\Service;
 
 use Priskz\Payload\Payload;
 use Priskz\SORAD\Service\Laravel\GenericService;
